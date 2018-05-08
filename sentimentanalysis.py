@@ -29,6 +29,7 @@ class sentimentAnalysis(object):
 		try:
 			self.Data['sentimentPercentage'] = self.Data['contents'].apply(sentiments,args=(self.logger,))
 			self.Data['sentiments'] = self.Data['sentimentPercentage].apply(sentimentReviews,args=(self.logger,))
+			self.Data.to_csv('Sentiment.csv',sep=',')
 		except Exception as e:
 			self.logger.error('cannot define sentiment {}'.format(e),exc_info=True)
 		
