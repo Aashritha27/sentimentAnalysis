@@ -39,6 +39,18 @@ def lemmatization(x,logger):
 def sentiments(x,logger):
 	logger.info('sentiment analysis')
 	try:
-		return(TextBlob(x).sentiment)
+		return(TextBlob(x).sentiment[0])
 	except:
 		return('Unknown')	
+
+def sentimentReviews(x,logger):
+	logger.info('reviews')
+	try:
+		if x > 0.5:
+			return('Positive')
+		elif x < -0.5:
+			return('negative')
+		else:
+			return('Unknown')
+
+				
