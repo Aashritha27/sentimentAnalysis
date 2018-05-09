@@ -53,4 +53,5 @@ def sentimentReviews(x,logger):
 		else:
 			return('Unknown')
 
-				
+	except:
+		return('x')
