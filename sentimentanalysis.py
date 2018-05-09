@@ -3,7 +3,7 @@ import yaml
 import nltk
 import time
 import logging.config
-from supportingFunctions import lowerCase,stopWords,stemming,lemmatization,sentiments
+from supportingFunctions import lowerCase,stopWords,stemming,lemmatization,sentiments,sentimentReviews
 
 nltk.download('wordnet')
 
