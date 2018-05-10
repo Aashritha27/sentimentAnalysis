@@ -103,4 +103,5 @@ def infoProduct(x,logger):
     
 	
 
-				
+	except:
+		return('x')
