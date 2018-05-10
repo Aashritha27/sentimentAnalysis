@@ -3,7 +3,7 @@ import yaml
 import nltk
 import time
 import logging.config
-from supportingFunctions import lowerCase,stopWords,stemming,lemmatization,sentiments
+from supportingFunctions import lowerCase,stopWords,stemming,lemmatization,sentimentReviews
 
 nltk.download('wordnet')
 
@@ -28,7 +28,7 @@ class sentimentAnalysis(object):
 		self.logger.info('sentiment Analysis')
 		try:
 			self.Data['sentimentPercentage'] = self.Data['contents'].apply(sentiments,args=(self.logger,))
-			self.Data['sentiments'] = self.Data['sentimentPercentage].apply(sentimentReviews,args=(self.logger,))
+			self.Data['sentiments'] = self.Data['sentimentPercentage'].apply(sentimentReviews,args=(self.logger,))
 		except Exception as e:
 			self.logger.error('cannot define sentiment {}'.format(e),exc_info=True)
 		
