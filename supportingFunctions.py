@@ -1,7 +1,10 @@
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
+import nltk
 from textblob import Word
 from textblob import TextBlob
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 
 def lowerCase(x,logger):
 	logger.info('case conversion to lower')
@@ -52,5 +55,52 @@ def sentimentReviews(x,logger):
 			return('negative')
 		else:
 			return('Unknown')
+	except:
+		return(x)
+	
+def wordCount(x,logger):
+	logger.info('counting the words')
+	try:
+		x = x.split(" ")
+		return(len(x))
+	except:
+		return(0)
+	
+def averageWord(x,logger):
+	logger.info('avarage of the words')
+	try:
+         words = x.split()
+         return(sum(len(word) for word in words)/len(words))
+	except:
+		return(0)
+       
+def specialCharacters(x,logger):
+	logger.info('special characters')
+	try:
+		x = [i for i in x.split(" ") if i.startswith('#')]
+		return(len(x))
+	except:
+		return(0)
+    
+def upperCase(x,logger):
+	logger.info('upper case')
+	try:
+		x = [i for i in x.split() if i.isupper()]
+		return(len(x))
+	except:
+		return(0)
+    
+def infoProduct(x,logger):
+	logger.info('product')
+	try:
+		wordToken = nltk.word_tokenize(x)
+		posTag = nltk.pos_tag(wordToken)
+		productInfo = [key for key,value in posTag if value =='NN']
+		return(",".join(productInfo))
+	except Exception as e:
+		logger.info('enter product Exception {}'.format(e))
+		return('No procuct')
+    
+	
 
 				
